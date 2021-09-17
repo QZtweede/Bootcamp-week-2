@@ -6,9 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div id="bird"></div>
+    <div id="bird">
+        <div id="wing"></div>
+    </div>
+    <section id="settings">
+        <h1>Bird Simulator</h1>
+        <button id="Ebutton">Earth</button>
+        <button id="Mbutton">Moon</button>
+        <button id="Jbutton">Jupiter</button>
+        <h2>Wingspan</h2>
+        <input type="range" min="1" max="100" value="50" id="slider">
+    </section>
 </body>
 </html>
 <script src="main.js"></script>

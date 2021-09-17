@@ -6,13 +6,103 @@
     vertical-align: baseline;
 }
 
+body{
+    overflow-y: hidden;
+    background-image: url(sprites/aarde.jpg);
+    background-size: cover;
+}
+
 #bird{
-    height: 40px;
-    width: 40px;
-    background: black;
+    height: 100px;
+    width: 100px;
+    background-image: url(sprites/eend.png);
+    background-repeat: no-repeat;
+    background-size: contain;
     position: absolute;
     bottom: 0;
     right: 0;
-    left: 0;
-    transition: 0.3s ease-out;
+    left: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: -32px;
+}
+
+#wing{
+    height: 50px;
+    width: 50px;
+    background-image: url(sprites/vleugel.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-right: 20%;
+    margin-top: 30%;
+    transform: rotate(30deg);
+    transform-origin: top right;
+}
+
+@keyframes flap {
+    to{transform: rotate(-10deg);}
+}
+
+@keyframes idle {
+    from{transform: rotate(20deg)}
+    to{transform: rotate(30deg)}
+}
+
+#settings{
+    height: 100vh;
+    width: 20vw;
+    position: absolute;
+    right: 0;
+    background: #fbd6db;
+    border-left: 0.5vw solid black;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#settings h1{
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 700;
+    font-size: 8vh;
+    text-align: center;
+    margin-top: 2vh;
+}
+
+#settings h2{
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 500;
+    font-size: 5vh;
+    text-align: center;
+    margin-top: 5vh;
+}
+
+#settings button{
+    height: 15vh;
+    width: 35vh;
+    margin-top: 3vh;
+    border-radius: 2vh;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 700;
+    font-size: 5vh;
+    border: 1vh solid black;
+    color: white;
+    cursor: pointer;
+}
+
+#Ebutton{
+    background-image: url(sprites/aarde.jpg);
+    background-size: cover;
+}
+
+#Mbutton{
+    background-image: url(sprites/maan.jpg);
+    background-size: cover;
+    background-position: bottom;
+}
+
+#Jbutton{
+    background-image: url(sprites/jupiter.jpg);
+    background-size: cover;
 }

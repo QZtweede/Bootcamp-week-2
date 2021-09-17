@@ -1,46 +1,64 @@
 var bird = document.getElementById("bird")
+var wing = document.getElementById("wing")
+var slider = document.getElementById("slider").addEventListener("onclick", wingSpan())
 var height = 0
-var right = 0
+var right = 800
 var array = {}
 var up = true
-var grav = 0
+var gravity = 100
+
+function wingSpan(){
+    console.log("test")
+    wing.style.transform = "translate(" + slider.value + ")"
+}
+
 
 onkeydown = onkeyup = async function(key){
-    array[key.keyCode] = key.type == "keydown";
-    if(array[87] && up === true){  
-        grav = 0
-        height = height + 30
+    array[key.keyCode] = key.type == "keydown"
+    if(array[38] && up === true){  
+        bird.style.transition = "bottom " + 0.3 + "s ease-out"
+        // grav = 0
+        height = parseInt(getComputedStyle(bird).bottom) + 30
         bird.style.bottom = height + "px" 
         up = false
-        await sleep(100)
-        gravity()
+        checkIfIdle()
+        animateWing()
         await sleep(500)
+        bird.style.transition = "bottom " + height / gravity + "s ease-out"
+        bird.style.bottom = 0 + "px"
         up = true
     }
 
-    if(array[87] && array[68] || array[68]){
-        right = right + 10
+    if(array[38] && array[39] || array[39]){
+        right = right + 5
         bird.style.left = right + "px"
+        bird.style.transform = "scaleX(1)"
     }
 
-    if(array[87] && array[65] || array[65]){
-        right = right - 10
+    if(array[38] && array[37] || array[37]){
+        right = right - 5
         bird.style.left = right + "px"
+        bird.style.transform = "scaleX(-1)"
     }
-    
 }
 
-async function gravity(){
-    console.log(parseInt(bird.style.bottom))
-    for(grav; grav < 9.81; grav = grav + 0.01){
-        if (array[87]) {        
-            grav = 0 
-            console.log(grav)
+async function animateWing(){
+    wing.style.animation = "flap 0.5s"
+    await sleep(500)
+    wing.style.animation = ""
+}
+
+async function checkIfIdle(){
+    if(array[38] === false){    
+        if(parseInt(getComputedStyle(bird).bottom) > 0){
+            wing.style.animation = "idle 0.2s infinite"
         }
-        height = height - grav
-        bird.style.bottom = height + "px" 
-        await sleep(50)
+        else(
+            wing.style.animation = ""
+        )
     }
+    await sleep(200)
+    checkIfIdle()
 }
 
 function sleep(time) {      //Functie om pauzes te maken
