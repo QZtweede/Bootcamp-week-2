@@ -1,15 +1,16 @@
 var bird = document.getElementById("bird")
 var wing = document.getElementById("wing")
-var slider = document.getElementById("slider").addEventListener("onclick", wingSpan())
+// var slider = document.getElementById("slider1").addEventListener("oninput", wingSpan())
 var height = 0
 var right = 800
 var array = {}
 var up = true
 var gravity = 100
 
-function wingSpan(){
+slider1.oninput = function wingSpan(){
     console.log("test")
-    wing.style.transform = "translate(" + slider.value + ")"
+    document.documentElement.style.setProperty("--var-transform", "scale(" + slider1.value / 50 + ")")
+    wing.style.transform = "scale(" + slider1.value / 50 + ") rotate(30deg)"
 }
 
 
