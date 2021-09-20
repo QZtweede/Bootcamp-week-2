@@ -10,6 +10,8 @@ body{
     overflow-y: hidden;
     background-image: url(sprites/aarde.jpg);
     background-size: cover;
+    background-attachment: fixed;
+    background-position: bottom;
 }
 
 #bird{
@@ -113,7 +115,7 @@ body{
 }
 
 
-slider {
+.slider {
     appearance: none;
     width: 15vw;
     height: 3vh;
