@@ -7,11 +7,45 @@
 }
 
 body{
-    overflow-y: hidden;
+    overflow: hidden;
     background-image: url(sprites/aarde.jpg);
     background-size: cover;
     background-attachment: fixed;
     background-position: bottom;
+}
+
+#controls{
+    height: 100vh;
+    width: 100vw;
+    background: white;
+    position: absolute;
+    z-index: 2;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    left: 0;
+}
+
+#controls h1{
+    font-size: 20vh;
+}
+
+p{
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 500;
+    font-size: 3vh;
+    text-align: center;
+}
+
+#controls button{
+    background: red;
+    margin-top: 10vh;
+}
+
+#controls p:nth-child(5){
+    margin-top: 20vh;
 }
 
 #bird{
@@ -60,6 +94,7 @@ body{
     height: 100vh;
     width: 20vw;
     position: absolute;
+    z-index: 1;
     right: 0;
     background: white;
     /* border-left: 0.5vw solid black; */
@@ -69,7 +104,16 @@ body{
     flex-direction: column;
 }
 
-#settings h1{
+img{
+    height: 6vh;
+    width: 6vh;
+    cursor: pointer;
+    position: absolute;
+    top: 2vh;
+    right: 2vh;
+}
+
+h1{
     font-family: 'Josefin Sans', sans-serif;
     font-weight: 700;
     font-size: 8vh;
@@ -77,7 +121,7 @@ body{
     margin-top: 2vh;
 }
 
-#settings h2{
+h2{
     font-family: 'Josefin Sans', sans-serif;
     font-weight: 500;
     font-size: 5vh;
@@ -85,7 +129,7 @@ body{
     margin-top: 5vh;
 }
 
-#settings button{
+button{
     height: 10vh;
     width: 35vh;
     margin-top: 3vh;
