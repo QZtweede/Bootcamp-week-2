@@ -62,6 +62,7 @@ p{
     justify-content: center;
     align-items: center;
     margin-bottom: -32px;
+    cursor: pointer;
 }
 
 #wing{
@@ -113,6 +114,17 @@ img{
     right: 2vh;
 }
 
+#kwek{
+    height: 6vh;
+    width: 6vw;
+    position: absolute;
+    background-image: url(sprites/kwek.png);
+    background-position: center;
+    background-size: cover;
+    margin-left: 7vw;
+    opacity: 0;
+}
+
 h1{
     font-family: 'Josefin Sans', sans-serif;
     font-weight: 700;
@@ -140,6 +152,12 @@ button{
     /* border: 1vh solid black; */
     color: white;
     cursor: pointer;
+    box-shadow: 0;
+    transition: 1s
+}
+
+button:hover{
+    box-shadow: 5px 5px 20px 7px rgba(0,0,0,0.50);
 }
 
 #Ebutton{

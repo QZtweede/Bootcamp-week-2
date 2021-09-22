@@ -5,7 +5,6 @@ var right = 800
 var array = {}
 var up = true
 var gravity = 100
-var isSettingChanging = false
 var b1 = document.getElementById("Ebutton")
 var b2 = document.getElementById("Mbutton")
 var b3 = document.getElementById("Jbutton")
@@ -13,6 +12,18 @@ var heightH = document.getElementById("heightH")
 var startB = document.getElementById("startButton")
 var controls = document.getElementById("controls")
 var icon = document.getElementById("icon")
+var soundEffect = new Audio("sprites/soundEffect.wav")
+var eendSoundEffect = new Audio("sprites/Eend.wav")
+var kwek = document.getElementById("kwek")
+
+
+
+bird.onclick = async function(){
+    eendSoundEffect.play()
+    kwek.style.opacity = 1
+    await sleep(200)
+    kwek.style.opacity = 0
+}
 
 startB.onclick = async function(){
     controls.style.transition = "2s"
@@ -51,18 +62,12 @@ b3.onclick = function(){    //verander achtergrond en gravity per button
 }
 
 slider1.oninput = function wingSpan(){  //verander de grootte van de vleugel en hoe snel de vogel omhoog gaat met de slider
-    isSettingChanging = true
     document.documentElement.style.setProperty("--var-transform", "scale(" + slider1.value / 50 + ")")
     wing.style.transform = "scale(" + slider1.value / 50 + ") rotate(30deg)"
 }
 
 slider2.oninput = function birdSize(){  //verander de grootte van de vogel met de slider
-    isSettingChanging = true
     bird.style.transform = "scale(" + slider2.value / 50 + ")"
-}
-
-slider1.onmouseup = slider2.onmouseup = function settingsNotChanging(){     //detect wanneer de slider niet word gebruikt
-    isSettingChanging = false
 }
 
 checkHeight()
@@ -71,6 +76,7 @@ checkIfIdle()
 onkeydown = onkeyup = async function(key){      //functie om te kijken welke knoppen worden ingedrukt
     array[key.keyCode] = key.type == "keydown"
     if(array[87] && up === true || array[38] && up === true){   //als de W knop / pijl omhoog word ingedrukt
+        soundEffect.play()
         bird.style.transition = "bottom " + 0.3 + "s ease-out"
         height = parseInt(getComputedStyle(bird).bottom) + slider1.value / 1.5 * gravity / 100
         bird.style.bottom = height + "px" 
@@ -114,7 +120,7 @@ async function animateWing(){   //animeert de vleugel als de vogel omhoog gaat
 }
 
 async function checkIfIdle(){   //kijkt of de vogel aan het vallen is en geeft dan een animatie aan de vleugel
-    if(array[87] === false && array[38] === undefined && isSettingChanging === false || array[87] === undefined && array[38] === false && isSettingChanging === false || array[87] === false && array[38] === false && isSettingChanging === false){    
+    if(array[87] === false && array[38] === undefined|| array[87] === undefined && array[38] === false|| array[87] === false && array[38] === false){    
         if(parseInt(getComputedStyle(bird).bottom) > 0){
             wing.style.animation = "idle 0.2s infinite"
         }
